@@ -20,7 +20,7 @@
   "scripts": {
     "test": "jest"
   },
-  "version": "1.0.0",
+  "version": "1.1.0",
   "dependencies": {
     "@iarna/toml": "^2.2.5",
     "split2": "^4.1.0",
