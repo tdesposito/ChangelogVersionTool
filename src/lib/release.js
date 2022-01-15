@@ -10,7 +10,7 @@ module.exports = release
 *
 * @param  {Object} argv configuration options
  */
-function release() {
+function release(argv = {}) {
     const fs = require('fs')
     const split = require('split2')
     const changelog = require('../common/changelog')
@@ -61,8 +61,12 @@ function release() {
                     updated.push(...updater.updateAll(resolvedConfig, current, bumped))
                 }
 
-                git.commit(updated, `Bumped version ${current} → ${bumped}`)
-                git.tag(bumped)
+                if (argv.commit) {
+                    git.commit(updated, `Bumped version ${current} → ${bumped}`)
+                    if (argv.tag) {
+                        git.tag(bumped)
+                    }
+                }
 
                 console.log(`cvbump: Bumped version ${current} → ${bumped}`)
             })

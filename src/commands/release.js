@@ -5,6 +5,17 @@
 
 exports.command = "release"
 exports.describe = "Bump to the next release version, update the changelog, and tag the release."
-exports.builder = {}
+exports.builder = {
+    commit: {
+        alias: 'c',
+        describe: "Git commit changed file",
+        default: true,
+    },
+    tag: {
+        alias: 't',
+        describe: "Tag the commit",
+        default: true,
+    },
+}
 exports.handler = require('../lib/release')
 
