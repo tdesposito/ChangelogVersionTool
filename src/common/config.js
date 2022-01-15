@@ -78,10 +78,10 @@ exports.defaultConfig = {
     }
   },
   "templates": {
-    "version": "## ${versinfo.bumped} - ${versinfo.date}",
-    "section": "### ${sectinfo.heading}",
-    "commit": "  * ${commit.message}",
-    "commitBodyLine": "    <br>_${line}_",
+    "version": "## ${versinfo.bumped} - ${versinfo.date}\n",
+    "section": "### ${sectinfo.heading}\n",
+    "commit": "* ${commit.message}",
+    "commitBodyLine": "  <br>_${line}_",
   },
   "update": [],
 }
