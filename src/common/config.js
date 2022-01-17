@@ -35,28 +35,28 @@ exports.defaultConfig = {
       "bump": "major"
     },
     "Added": {
-      "pattern": "/^add(ed)? /i",
+      "pattern": "/^add(ed)?:? /i",
       "order": 4,
       "heading": "Added",
       "bump": "minor"
     },
     "Changed": {
-      "pattern": "/^changed? /i",
+      "pattern": "/^changed?:? /i",
       "order": 5,
       "heading": "Changed"
     },
     "Deprecated": {
-      "pattern": "/^deprecated? /i",
+      "pattern": "/^deprecated?:? /i",
       "order": 3,
       "heading": "Deprecated: These features/functions will be removed in a future release."
     },
     "Fixed": {
-      "pattern": "/^fix(ed)? /i",
+      "pattern": "/^fix(ed)?:? /i",
       "order": 7,
       "heading": "Fixed"
     },
     "Updated": {
-      "pattern": "/^updated? /i",
+      "pattern": "/^updated?:? /i",
       "order": 8,
       "heading": "Other Updates",
     },
@@ -66,7 +66,7 @@ exports.defaultConfig = {
       "heading": ""
     },
     "Removed": {
-      "pattern": "/^removed? /i",
+      "pattern": "/^removed?:? /i",
       "order": 6,
       "heading": "Removed",
       "bump": "minor"
