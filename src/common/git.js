@@ -79,7 +79,7 @@ exports.remote = remote
  */
 function remote() {
   try {
-    return execSync('git remote get-url origin', {stdio: ['pipe', 'pipe', 'ignore']}).toString().trim()
+    return execSync('git remote get-url origin', {stdio: ['pipe', 'pipe', 'ignore']}).toString().trim().replace(/\.git$/,'')
   } catch (error) {
     return ''
   }
