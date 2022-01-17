@@ -1,6 +1,6 @@
 # cvbump - Changelog and Version Bumping Tool (version 1.2.1)
 
-This tool combines the process of updated a project's version identifier(s) and
+This tool combines the process of updating a project's version identifier(s) and
 the corresponding Changelog. It works with either `package.json` or
 `pyproject.toml` files, and automatically determines the type of version bump
 needed based on [Keep A Changelog](https://keepachangelog.com/) and [Semantic
