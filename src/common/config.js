@@ -17,7 +17,7 @@ exports.defaultConfig = {
     "* The format is based on [Keep a Changelog](https://keepachangelog.com/)\n" +
     "* This project adheres to [Semantic Versioning](https://semver.org/)\n" +
     "* This project uses [cvbump]" +
-    "(https://github.com/tdesposito/cvbump) to maintain this " +
+    "(https://github.com/tdesposito/ChangelogVersionTool) to maintain this " +
     "changelog.\n\n",
   "postamble": "## Notes\n\nNone at this time.\n",
   "showMessageBody": true,

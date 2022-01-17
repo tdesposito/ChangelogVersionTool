@@ -16,7 +16,7 @@
     "versioning"
   ],
   "license": "MIT",
-  "repository": "github:tdesposito/cvbump",
+  "repository": "github:tdesposito/ChangelogVersionTool",
   "scripts": {
     "test": "jest"
   },
