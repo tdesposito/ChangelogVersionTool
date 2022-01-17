@@ -1,4 +1,4 @@
-# cvbump - Changelog and Version Bumping Tool (version 1.2.0)
+# cvbump - Changelog and Version Bumping Tool (version 1.2.1)
 
 This tool combines the process of updated a project's version identifier(s) and
 the corresponding Changelog. It works with either `package.json` or

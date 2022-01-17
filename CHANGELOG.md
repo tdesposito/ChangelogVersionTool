@@ -6,6 +6,12 @@ All notable changes to this project will be documented in this file.
 * This project adheres to [Semantic Versioning](https://semver.org/)
 * This project uses [cvbump](https://github.com/tdesposito/cvbump) to maintain this changelog.
 
+## [1.2.1](https://github.com/tdesposito/ChangelogVersionTool/releases/tag/1.2.1) - 2022-01-17
+
+### Fixed
+
+* Fixed bug in github links (forgot to remove .git) ([c40d0fb](https://github.com/tdesposito/ChangelogVersionTool/commit/c40d0fb7eb7a4df14061ab34949948c32628b5bc) by Todd Esposito)
+
 ## [1.2.0](https://github.com/tdesposito/ChangelogVersionTool.git/releases/tag/1.2.0) - 2022-01-17
 
 ### Added
