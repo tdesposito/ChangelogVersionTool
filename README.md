@@ -1,4 +1,4 @@
-# cvbump - Changelog and Version Bumping Tool
+# cvbump - Changelog and Version Bumping Tool (version 1.2.0)
 
 This tool combines the process of updated a project's version identifier(s) and
 the corresponding Changelog. It works with either `package.json` or
@@ -9,6 +9,11 @@ Versioning](https://semver.org/) recommendations.
 It will update the version string in any set of files you specify, beyond the
 project's configuration file. See [Updating non-configuration
 files](#updating-non-configuration-files), below, for further details.
+
+[![GitHub package.json version (main)](https://img.shields.io/github/package-json/v/tdesposito/ChangelogVersionTool/main?label=Version)](https://github.com/tdesposito/ChangelogVersionTool)
+[![npm](https://img.shields.io/npm/v/cvbump)](https://npmjs.org/package/cvbump)
+![License](https://img.shields.io/github/license/tdesposito/ChangelogVersionTool)
+![npm](https://img.shields.io/npm/dm/cvbump)
 
 ## Installation
 
