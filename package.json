@@ -31,5 +31,80 @@
     "jest": "^27.3.1",
     "jsdoc": "^3.5.5",
     "rfdc": "^1.3.0"
+  },
+  "cvbump": {
+    "changelog": "CHANGELOG.md",
+    "preamble": "# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n* The format is based on [Keep a Changelog](https://keepachangelog.com/)\n* This project adheres to [Semantic Versioning](https://semver.org/)\n* This project uses [cvbump](https://github.com/tdesposito/ChangelogVersionTool) to maintain this changelog.\n\n",
+    "postamble": "## Notes\n\nNone at this time.\n",
+    "showMessageBody": true,
+    "sections": {
+      "Security": {
+        "pattern": "/security/i",
+        "order": 2,
+        "heading": "Security Related Changes",
+        "bump": "minor"
+      },
+      "Breaking": {
+        "pattern": "/BREAK[S|ING]/",
+        "order": 1,
+        "heading": "BREAKING CHANGES: Be aware these changes may break older code.",
+        "bump": "major"
+      },
+      "Added": {
+        "pattern": "/^add(ed)?:? /i",
+        "order": 4,
+        "heading": "Added",
+        "bump": "minor"
+      },
+      "Changed": {
+        "pattern": "/^changed?:? /i",
+        "order": 5,
+        "heading": "Changed"
+      },
+      "Deprecated": {
+        "pattern": "/^deprecated?:? /i",
+        "order": 3,
+        "heading": "Deprecated: These features/functions will be removed in a future release."
+      },
+      "Fixed": {
+        "pattern": "/^fix(ed)?:? /i",
+        "order": 7,
+        "heading": "Fixed"
+      },
+      "Updated": {
+        "pattern": "/^updated?:? /i",
+        "order": 8,
+        "heading": "Other Updates"
+      },
+      "Ignored": {
+        "pattern": "/^(bump|cvbump)/i",
+        "order": -1,
+        "heading": ""
+      },
+      "Removed": {
+        "pattern": "/^removed?:? /i",
+        "order": 6,
+        "heading": "Removed",
+        "bump": "minor"
+      },
+      "Misc": {
+        "pattern": "/.*/",
+        "order": -1,
+        "heading": ""
+      }
+    },
+    "templates": {
+      "version": "## ${versinfo.bumped} - ${versinfo.date}\n",
+      "section": "### ${sectinfo.heading}\n",
+      "commit": "* ${commit.message} (${commit.short} by ${commit.author})",
+      "commitBodyLine": "  <br>_${line}_"
+    },
+    "linkedTemplates": {
+      "version": "## [${versinfo.bumped}](${repo}/releases/tag/${versinfo.bumped}) - ${versinfo.date}\n",
+      "section": "### ${sectinfo.heading}\n",
+      "commit": "* ${commit.message} ([${commit.short}](${repo}/commit/${commit.long}) by ${commit.author})",
+      "commitBodyLine": "  <br>_${line}_"
+    },
+    "update": []
   }
 }
