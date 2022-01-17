@@ -80,7 +80,13 @@ exports.defaultConfig = {
   "templates": {
     "version": "## ${versinfo.bumped} - ${versinfo.date}\n",
     "section": "### ${sectinfo.heading}\n",
-    "commit": "* ${commit.message}",
+    "commit": "* ${commit.message} (${commit.short} by ${commit.author})",
+    "commitBodyLine": "  <br>_${line}_",
+  },
+  "linkedTemplates": {
+    "version": "## [${versinfo.bumped}](${repo}/releases/tag/${versinfo.bumped}) - ${versinfo.date}\n",
+    "section": "### ${sectinfo.heading}\n",
+    "commit": "* ${commit.message} ([${commit.short}](${repo}/commit/${commit.long}) by ${commit.author})",
     "commitBodyLine": "  <br>_${line}_",
   },
   "update": [],

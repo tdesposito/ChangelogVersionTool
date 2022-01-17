@@ -44,10 +44,16 @@ exports.buildLogSection = buildLogSection
  * @return {string}            markdown-formatted changelog for this section
  */
 function buildLogSection(config, changetree, versinfo) {
-  const renderVersion = (versinfo) => eval('`' + config.templates.version + '`') // eslint-disable-line no-unused-vars
-  const renderSection = (sectinfo) => eval('`' + config.templates.section + '`') // eslint-disable-line no-unused-vars
-  const renderCommit = (commit) =>  eval('`' + config.templates.commit + '`') // eslint-disable-line no-unused-vars
-  const renderBodyLine = (line) => eval('`' + config.templates.commitBodyLine + '`') // eslint-disable-line no-unused-vars
+  const repo = require('./git').remote()
+  var templates = config.templates
+  if (repo.startsWith('https://github.com')) {
+    templates = config.linkedTemplates
+  }
+
+  const renderVersion = (versinfo) => eval('`' + templates.version + '`') // eslint-disable-line no-unused-vars
+  const renderSection = (sectinfo) => eval('`' + templates.section + '`') // eslint-disable-line no-unused-vars
+  const renderCommit = (commit) =>  eval('`' + templates.commit + '`') // eslint-disable-line no-unused-vars
+  const renderBodyLine = (line) => eval('`' + templates.commitBodyLine + '`') // eslint-disable-line no-unused-vars
 
   const sectionOrder =
     Object.entries(config.sections)
