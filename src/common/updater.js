@@ -37,7 +37,7 @@ function updateAll(config, current, bumped) {
     if (entry.search) {
       content = updateText(entry.search, current, bumped, content)
     } else if (entry.file.endsWith('.toml')) {
-       content = updateToml(entry.key, current, bumped, content)
+      content = updateToml(entry.key, current, bumped, content)
     } else if (entry.file.endsWith('.json')) {
       content = updateJson(entry.key, current, bumped, content)
     } else {
