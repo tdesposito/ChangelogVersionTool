@@ -6,6 +6,17 @@ All notable changes to this project will be documented in this file.
 * This project adheres to [Semantic Versioning](https://semver.org/)
 * This project uses [cvbump](https://github.com/tdesposito/cvbump) to maintain this changelog.
 
+## [1.2.2](https://github.com/tdesposito/ChangelogVersionTool/releases/tag/v1.2.2) - 2022-01-20
+
+### Changed
+
+* Changed init to a minimal configuration ([c189cef](https://github.com/tdesposito/ChangelogVersionTool/commit/c189cef8955708dc24bd0910518640113536f005) by Todd Esposito)
+  <br>_The original verbose init is now behind the --all switch_
+
+### Fixed
+
+* Fix auto() module refs ([51663b7](https://github.com/tdesposito/ChangelogVersionTool/commit/51663b771f5f08cd28c1e66eefdd5ebba6791e96) by Todd Esposito)
+
 ## [1.2.1](https://github.com/tdesposito/ChangelogVersionTool/releases/tag/1.2.1) - 2022-01-17
 
 ### Fixed
