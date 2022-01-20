@@ -99,10 +99,10 @@ $ cvbump init
 cvbump: initialized configuration in "./package.json"; version is 1.0.0
 ```
 
-In response, `cvbump` will add it's configuration to your local config file (see
-[Configuration](#configuration), below, for more details). It takes the current
-version from your project's configuration file. If not set, it defaults to
-`1.0.0`.
+In response, `cvbump` will add a minimal configuration to your local config file
+(see [Configuration](#configuration), below, for more details). It takes the
+current version from your project's configuration file. If not set, it defaults
+to `1.0.0`.
 
 If you want to keep `cvbump` **out** of your project configuration file, use:
 
@@ -235,15 +235,18 @@ By default, `cvbump` builds a changelog in the style of [Keep A
 Changelog](https://keepachangelog.com/). However, you can customize this process
 by specifying various parameters in the active configuration file.
 
-The defaults are shown below:
+If you use `cvbump init --all`, your configuration file will have ALL of the config parameters `cvbump` uses
 
 ```json
 {
   "cvbump": {
     "changelog": "CHANGELOG.md",
-    "preamble": "# Changelog\nAll notable changes to this project will be documented in this file.\n\n* The format is based on [Keep a Changelog](https://keepachangelog.com/)\n* This project adheres to [Semantic Versioning](https://semver.org/)\n* This project uses [cvbump](https://github.com/tdesposito/ChangelogVersionTool) to maintain this changelog.\n\n",
+    "showMessageBody": true,
+    "preamble": "... the Markdown which start your changelog file",
+    "postamble": "... The Markdown which ends your changelog file",
     "sections": { "... many lines ..." },
     "templates": { "... many lines ..." },
+    "linkedTemplates": { "... many lines ..." },
     "update": [],
   }
 }
@@ -251,21 +254,49 @@ The defaults are shown below:
 
 #### `changelog`
 
-Defines the filename in which to keep the changelog.
+The filename in which to keep the changelog.
+
+#### `showMessageBody`
+
+If `true`, the body of commit messages, if any, is included in the changelog.
 
 #### `preamble`
 
-Defines the materials to place at the top of the changelog.
+The Markdown text to place at the top of the changelog.
 
-#### `sections`
+#### `postamble`
 
-Defines a set of categories to find in your commit history, and how to process
-them.
-
-#### `templates`
-
-Defines the set of template strings used to build the changelog.
+The Markdown text to place at the bottom of the changelog.
 
 #### `update`
 
-A list of files to update when the version changes.
+The list of files to update when the version changes (see above).
+
+#### `sections`
+
+The list of categories to find in your commit history, and how to process
+them. Each category looks like:
+
+```json
+  {
+    "...{rule name}...": {
+      "pattern": "...{regex to find this type of commit in the log}...",
+      "order": 1,
+      "heading": "...{the heading for the section}...",
+      "bump": "...{the component to bump when this rule matches (major/minor/patch)}..."
+    },
+  }
+```
+
+The `order` component indicates the order of matches to this rule in the
+changelog section. use -1 to suppress output of matches from this rule.
+
+`bump` may be omitted if the rule should not trigger a version bump.
+
+#### `templates`
+
+Template strings used to build the changelog.
+
+#### `linkedTemplates`
+
+Template strings used to build the changelog, including links to GitHub.

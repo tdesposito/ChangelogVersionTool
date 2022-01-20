@@ -10,8 +10,13 @@
 
 const fs = require('fs')
 
-exports.defaultConfig = {
+exports.minimalConfig = {
   "changelog": "CHANGELOG.md",
+  "showMessageBody": true,
+  "update": []
+}
+
+exports.defaultConfig = {
   "preamble": "# Changelog\n\n" +
     "All notable changes to this project will be documented in this file.\n\n" +
     "* The format is based on [Keep a Changelog](https://keepachangelog.com/)\n" +
@@ -20,7 +25,6 @@ exports.defaultConfig = {
     "(https://github.com/tdesposito/ChangelogVersionTool) to maintain this " +
     "changelog.\n\n",
   "postamble": "## Notes\n\nNone at this time.\n",
-  "showMessageBody": true,
   "sections": {
     "Security": {
       "pattern": "/security/i",
@@ -89,7 +93,7 @@ exports.defaultConfig = {
     "commit": "* ${commit.message} ([${commit.short}](${repo}/commit/${commit.long}) by ${commit.author})",
     "commitBodyLine": "  <br>_${line}_",
   },
-  "update": [],
+  ...exports.minimalConfig
 }
 
 

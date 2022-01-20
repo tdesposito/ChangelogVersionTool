@@ -11,7 +11,7 @@ module.exports = init
 */
 function init(args = {}) {
   const fs = require('fs')
-  const { defaultConfig, determineCfgFile, getConfigObject } = require('../common/config')
+  const { defaultConfig, determineCfgFile, getConfigObject, minimalConfig } = require('../common/config')
   const git = require('../common/git')
 
   var cfName
@@ -38,10 +38,17 @@ function init(args = {}) {
     if (cfg.cvbump) {
       console.log(`warning: init won't overwrite the current contents of your cvbump configuration. Aborting.`)
     } else {
-      cfg.cvbump = defaultConfig
+      if (args.all) {
+        cfg.cvbump = defaultConfig
+      } else {
+        cfg.cvbump = minimalConfig
+      }
       cfg.update()
-      git.commit([cfName], 'cvbump - initialize configuration')
       console.log(`cvbump: initialized configuration in '${cfName}'; version is ${cfg.version}`)
+      if (args.commit) {
+        console.log(`cvbump: committing change to ${cfName}`)
+        git.commit([cfName], 'cvbump - initialize configuration')
+      }
     }
   }
 }

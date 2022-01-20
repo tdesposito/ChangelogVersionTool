@@ -46,7 +46,7 @@ exports.buildLogSection = buildLogSection
 function buildLogSection(config, changetree, versinfo) {
   const repo = require('./git').remote()
   var templates = config.templates
-  if (repo.startsWith('https://github.com')) {
+  if (repo.startsWith('https://github.com') && config.linkedTemplates) {
     templates = config.linkedTemplates
   }
 
