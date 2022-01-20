@@ -5,8 +5,8 @@
 module.exports = auto
 
 function auto() {
-    const config = require('./common/config').get()
-    const parts = require('./common/version').split(config.version)
+    const config = require('../common/config').get()
+    const parts = require('../common/version').split(config.version)
     if (parts.stage) {
         require('./pre')({})
     } else {
