@@ -6,6 +6,14 @@ All notable changes to this project will be documented in this file.
 * This project adheres to [Semantic Versioning](https://semver.org/)
 * This project uses [cvbump](https://github.com/tdesposito/cvbump) to maintain this changelog.
 
+## [1.2.3](https://github.com/tdesposito/ChangelogVersionTool/releases/tag/v1.2.3) - 2022-01-27
+
+### Fixed
+
+* Fixed bug where release didn't drop the stage ([407afa5](https://github.com/tdesposito/ChangelogVersionTool/commit/407afa53763b2445bbde7aa02515a51aa888e059) by Todd Esposito)
+* Fixed RegExp for when search contains metachars ([878be0c](https://github.com/tdesposito/ChangelogVersionTool/commit/878be0c5776a9122331ef48d122546cff127846f) by Todd Esposito)
+* Fixed replaceAll usage for NodeJS < 16 ([97b48c5](https://github.com/tdesposito/ChangelogVersionTool/commit/97b48c5a510e56302bf50826158b005ad3eb8e76) by Todd Esposito)
+
 ## [1.2.2](https://github.com/tdesposito/ChangelogVersionTool/releases/tag/v1.2.2) - 2022-01-20
 
 ### Changed
