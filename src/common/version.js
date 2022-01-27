@@ -18,18 +18,35 @@ exports.join = ({major, minor, patch, stage, rev}) => {
 
 
 exports.calcBumped = (parts, args) => {
-  const newstage = args.rc ? 'rc' : (args.beta ? 'beta' : (args.alpha ? 'alpha' : parts.stage))
-  return exports.join({
-    major: parts.major + (args.major ?  1 : 0),
-    minor: args.minor ? parts.minor + 1 : (args.major ? 0 : parts.minor),
-    // patch is bumped if we are on release, but not --major/minor
-    // patch is set to 0 if --major/minor
-    // patch is not bumped if stage is changed
-    patch: (parts.stage === undefined && (!(args.major || args.minor))) ? parts.patch + 1 :
-           ((args.major || args.minor) ? 0 : parts.patch),
-    stage: newstage,
-    rev: (newstage === parts.stage) ? parts.rev + 1 : 0
-  })
+  const bumped = {...parts}
+  if (args.release) {
+    bumped.stage = undefined
+    if (parts.stage) {
+      if (args.major && (parts.minor > 0 || parts.patch > 0)) {
+        bumped.major += 1; bumped.minor = 0; bumped.patch = 0
+      } else if (args.minor && parts.patch > 0) {
+        bumped.minor += 1; bumped.patch = 0
+      }
+    }
+  } else {
+    if (args.major) {
+      bumped.major += 1; bumped.minor = 0; bumped.patch = 0
+    } else if (args.minor) {
+      bumped.minor += 1; bumped.patch = 0
+    } else if (! parts.stage) {
+      bumped.patch += 1
+    }
+    bumped.stage = args.rc ? 'rc' : (args.beta ? 'beta' : (args.alpha ? 'alpha' : bumped.stage))
+    if (bumped.stage) {
+      if (bumped.stage === parts.stage) {
+        bumped.rev += 1
+      } else {
+        bumped.rev = 0
+      }
+    }
+  }
+
+  return exports.join(bumped)
 }
 
 
@@ -46,6 +63,8 @@ function calcLevel(config, tree) {
     patch: false,
     minor: false,
     major: false,
+    // This is ONLY called in the release workflow, so indicate we're releasing
+    release: true,
   }
   for (const [key, sect] of Object.entries(config.sections)) {
     if (tree[key].length && sect.bump) {

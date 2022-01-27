@@ -24,13 +24,14 @@ function release(argv = {}) {
 
     let current = config.version
     let [bumped, prerel] = current.split('-')
-    let gitlog, tree
+    let gitlog, tree, from_tag
 
     if (prerel) {
-        gitlog = git.log(config.previousRelease)
+        from_tag = config.previousRelease
     } else {
-        gitlog = git.log(current)
+        from_tag = current
     }
+    gitlog = git.log(from_tag)
     if (gitlog.length) {
         tree = changelog.buildChangeTree(resolvedConfig, gitlog)
         bumped = version.calcBumped(version.split(current), version.calcLevel(resolvedConfig, tree))
@@ -71,7 +72,7 @@ function release(argv = {}) {
                 console.log(`cvbump: Bumped version ${current} → ${bumped}`)
             })
     } else {
-        console.log('cvbump: no recent commit history; cannot release')
+        console.log(`cvbump: no commit history since tag ${from_tag}; cannot release`)
     }
 }
 

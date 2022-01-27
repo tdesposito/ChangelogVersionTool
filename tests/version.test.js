@@ -21,7 +21,7 @@ describe('validBump correctly filters invalid bumps', () => {
 })
 
 
-describe('calcBumped corrctly bumps a release version to alpha version', () => {
+describe('calcBumped correctly bumps a release version to alpha version', () => {
   const before = version.split("1.2.3")
   test('bump from release to alpha/patch', () => {
     expect(version.calcBumped(before, {alpha: true})).toBe("1.2.4-alpha.0")
@@ -35,7 +35,7 @@ describe('calcBumped corrctly bumps a release version to alpha version', () => {
 })
 
 
-describe('calcBumped corrctly bumps an alpha version', () => {
+describe('calcBumped correctly bumps an alpha version', () => {
   const before = version.split("1.2.3-alpha.4")
   test('bump alpha', () => {
     expect(version.calcBumped(before, {alpha: true})).toBe("1.2.3-alpha.5")
@@ -49,7 +49,28 @@ describe('calcBumped corrctly bumps an alpha version', () => {
 })
 
 
-describe('calcBumped corrctly bumps a beta version', () => {
+describe('calcBumped correctly bumps an alpha version to release', () => {
+  test('release patch -> patch', () => {
+    expect(version.calcBumped(version.split("1.2.3-alpha.4"), { release: true })).toBe("1.2.3")
+  })
+  test('release patch -> minor', () => {
+    expect(version.calcBumped(version.split("1.2.3-alpha.4"), { minor: true, release: true })).toBe("1.3.0")
+  })
+  test('release patch -> major', () => {
+    expect(version.calcBumped(version.split("1.2.3-alpha.4"), { major: true, release: true })).toBe("2.0.0")
+  })
+  test('release minor -> minor', () => {
+    expect(version.calcBumped(version.split("1.2.0-alpha.4"), { patch: true, release: true })).toBe("1.2.0")
+  })
+  test('release minor -> major', () => {
+    expect(version.calcBumped(version.split("1.2.0-alpha.4"), { major: true, release: true })).toBe("2.0.0")
+  })
+  test('release major -> major', () => {
+    expect(version.calcBumped(version.split("2.0.0-alpha.4"), { patch: true, minor: true, release: true })).toBe("2.0.0")
+  })
+})
+
+describe('calcBumped correctly bumps a beta version', () => {
   const before = version.split("1.2.3-beta.4")
   test('bump beta to rc', () => {
     expect(version.calcBumped(before, {rc: true})).toBe("1.2.3-rc.0")
