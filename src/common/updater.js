@@ -100,7 +100,12 @@ exports.updateText = updateText
  * @return {string}         updated file content, or null on failure
  */
 function updateText(search, current, bumped, content) {
-  const from = new RegExp(search.replace('{{version}}', current), 'g')
+  const from = new RegExp(
+    search
+      .replace('{{version}}', current)
+      .replace(/[.*+?^${}()|[\]\\]/g, '\\$&'),
+      'g'
+    )
   const to = search.replace('{{version}}', bumped)
   const updated = content.replace(from, to)
   if (updated !== content) {
