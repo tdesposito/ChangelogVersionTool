@@ -27,6 +27,14 @@ exports.calcBumped = (parts, args) => {
       } else if (args.minor && parts.patch > 0) {
         bumped.minor += 1; bumped.patch = 0
       }
+    } else {
+      if (args.major) {
+        bumped.major += 1; bumped.minor = 0; bumped.patch = 0
+      } else if (args.minor) {
+        bumped.minor += 1; bumped.patch = 0
+      } else {
+        bumped.patch += 1
+      }
     }
   } else {
     if (args.major) {
